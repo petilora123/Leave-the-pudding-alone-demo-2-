@@ -31,22 +31,26 @@ if(desative == false)
 	}
 }
 
-if(obj_player.state == player_state_dead)
-{
-	x = xstart;
-	y = ystart;
-	mode = "ground";
-}
-else if(obj_player.state == player_state_hidden)
-{	
-	desative = false;
+if(instance_exists(target))
+	{
+	if(target.state == player_state_dead)
+	{
+		x = lerp(x,xstart,0.20);
+		y = lerp(y,ystart,0.20);
+		
+		mode = "ground";
+	}
+	else if(target.state == player_state_hidden)
+	{	
+		desative = false;
 	
-	x = xstart;
-	y = ystart;
-	image_alpha = 1;
+		x = lerp(x,xstart,0.20);
+		y = lerp(y,ystart,0.20);
+		
+		image_alpha = 1;
 	
-	mode = "ground";
+		mode = "ground";
+	}
 }
-
 
 show_debug_message(ystart);

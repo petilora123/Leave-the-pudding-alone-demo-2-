@@ -35,6 +35,15 @@ see = 1;
 angle = 0;
 
 inclination = 10;
+
+change_sprite = function(sprite)
+{
+	if(sprite_index == sprite) return 0;
+	
+	image_index = 0;
+	
+	sprite_index = sprite;
+}
 #endregion
 
 #region door and keys
@@ -42,5 +51,20 @@ key = noone;
 
 #endregion
 
-state = player_state_free;
+#region dead
+dead_x = 0;
+dead_y = 0;
 
+dead = function()
+{
+	image_index = 0;
+	
+	dead_x = x;
+	dead_y = y;
+	
+	state = player_state_dead;
+}
+
+#endregion
+
+state = player_state_free;

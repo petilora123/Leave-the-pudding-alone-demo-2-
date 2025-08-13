@@ -27,8 +27,7 @@ function player_state_free()
 			}
 		}
 		
-		
-		sprite_index = spr_player_run;
+		change_sprite(spr_player_run);
 		
 		move_dir = point_direction(0,0,key_right-key_left,0);
 		move_spd = approach(move_spd,move_spd_max,acc);
@@ -37,7 +36,7 @@ function player_state_free()
 	}
 	else
 	{
-		sprite_index = spr_player;
+		change_sprite(spr_player);
 		
 		move_spd = approach(move_spd,0,dcc);	
 		
@@ -135,17 +134,14 @@ function player_state_free()
 	#region dead
 	if(place_meeting(x, y, obj_fork_small)) 
 	{
-		state = player_state_dead;
-		
-		image_index = 0;
+		dead();
 	}
 	#endregion
 }
 
 function player_state_dead()
 {
-	static _sprite_index = spr_player_dead;
-	sprite_index = _sprite_index;
+	change_sprite(spr_player_dead);
 	
 	hsp = 0;
 	vsp = 0;
@@ -154,6 +150,9 @@ function player_state_dead()
 	key = noone;
 	
 	image_speed = 1;
+	
+	y = random_range(dead_x - 1, dead_x + 1);
+	y = random_range(dead_y - 1, dead_y + 1);
 	
 	// mudando a cor para red
 	var r = lerp(color_get_red(image_blend), 160, 0.01);
@@ -165,7 +164,7 @@ function player_state_dead()
 	screen_shake(10,60);
 	
 	// criando particulas e mudando para o state hidden
-	if(image_index > image_number - 1 && sprite_index == _sprite_index)
+	if(image_index > image_number - 1)
 	{
 		var _choose = irandom(100);
 		
@@ -196,23 +195,23 @@ function player_state_hidden()
 	hsp = 0;
 	vsp = 0;
 	
+	dead_x = 0;
+	dead_y = 0;
 	
 	// particulas e voltar para o stae free
 	var _func = function()
 	{
 		
 		for(var i = 0; i < 1; i++)
-		{
-			if(i <= 0) 
-			{
-				state = player_state_free; 
-				image_alpha = 1;
-			}
-				
+		{	
 			var yy = y - sprite_height / 2;
 				
 			instance_create_depth(x, yy, depth - 1, obj_part_splash_revive);
 		}
+		
+		state = player_state_free; 
+		
+		image_alpha = 1;
 	}
 	
 	// time source da troca de estado e particula
@@ -221,3 +220,27 @@ function player_state_hidden()
 	time_source_start(_time_source);
 	
 }
+
+
+function player_state_door()
+{
+	hsp = 0;
+	vsp = 0;
+	
+	angle = 0;
+	
+	image_alpha -= 0.001;
+	
+	var r = lerp(color_get_red(image_blend), 0, 0.01);
+	var g = lerp(color_get_green(image_blend), 0, 0.01);
+	var b = lerp(color_get_blue(image_blend), 0, 0.01);
+	
+	image_blend = make_color_rgb(r, g, b);
+	
+	if(image_alpha <= 0)
+	{
+		state = player_state_dead;
+		
+		image_index = 0;
+	}
+}	
