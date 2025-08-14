@@ -229,18 +229,23 @@ function player_state_door()
 	
 	angle = 0;
 	
-	image_alpha -= 0.001;
-	
-	var r = lerp(color_get_red(image_blend), 0, 0.01);
-	var g = lerp(color_get_green(image_blend), 0, 0.01);
-	var b = lerp(color_get_blue(image_blend), 0, 0.01);
-	
-	image_blend = make_color_rgb(r, g, b);
-	
-	if(image_alpha <= 0)
+	var _door = function()
 	{
-		state = player_state_dead;
+		var r = lerp(color_get_red(image_blend), 0, 0.01);
+		var g = lerp(color_get_green(image_blend), 0, 0.01);
+		var b = lerp(color_get_blue(image_blend), 0, 0.01);
+	
+		image_blend = make_color_rgb(r, g, b);
+	
+		if(image_blend == 0)
+		{
+			state = player_state_hidden;
 		
-		image_index = 0;
+			image_index = 0;
+		}
 	}
+	
+	var _time_source = time_source_create(time_source_game, 120, time_source_units_frames, _door);
+	
+	time_source_start(_time_source);
 }	

@@ -14,9 +14,8 @@ if(instance_exists(target))
 	{
 		view_width = lerp(camera_get_view_width(cam), normal_width, 0.1);
 		view_height = lerp(camera_get_view_height(cam), normal_height, 0.1);
-	}
-	
-	if(door.open)
+	}	
+	if(door.open == false && target.state == player_state_door)
 	{
 		view_width = lerp(camera_get_view_width(cam), zoom_width, 0.1);
 		view_height = lerp(camera_get_view_height(cam), zoom_height, 0.1);

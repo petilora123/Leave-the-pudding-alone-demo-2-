@@ -31,16 +31,17 @@ if(desative == false)
 	}
 }
 
-if(instance_exists(target))
-	{
-	if(target.state == player_state_dead)
+
+if(instance_exists(obj_player))
+{
+	if(obj_player.state == player_state_dead)
 	{
 		x = lerp(x,xstart,0.20);
 		y = lerp(y,ystart,0.20);
 		
 		mode = "ground";
 	}
-	else if(target.state == player_state_hidden)
+	else if(obj_player.state == player_state_hidden)
 	{	
 		desative = false;
 	
@@ -52,5 +53,3 @@ if(instance_exists(target))
 		mode = "ground";
 	}
 }
-
-show_debug_message(ystart);

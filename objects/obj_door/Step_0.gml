@@ -25,13 +25,4 @@ if(instance_exists(obj_player))
 		open = false;
 	}
 
-	if(obj_player.state == player_state_free)
-	{
-		if(image_index >= image_number - 1 && image_speed == 0)
-		{
-			obj_player.state = player_state_door;
-			
-			exit;
-		}
-	}
 }
