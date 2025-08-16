@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_part_create",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_part_create",
+  "parent":{
+    "name":"fx_scripts",
+    "path":"folders/Scripts/fx_scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

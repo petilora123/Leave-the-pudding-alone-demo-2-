@@ -3,7 +3,7 @@
 hsp = 0;
 vsp = 0;
 
-colls = [layer_tilemap_get_id("tile_wall")];
+colls = [layer_tilemap_get_id("tile_wall"),obj_block];
 
 move_spd_max = 6;
 move_spd = 0;
@@ -13,6 +13,8 @@ acc = 0.3;
 dcc = 0.35;
 
 inclination = 10;
+
+can_move = 0;
 #endregion
 
 #region jump and grav

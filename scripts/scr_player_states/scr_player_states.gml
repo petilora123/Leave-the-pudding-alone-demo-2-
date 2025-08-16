@@ -6,55 +6,55 @@ function player_state_free()
 	var key_right = keyboard_check(vk_right);
 	
 	#region movement hsp
-	
-	var move = key_right - key_left != 0;
-	
-	if(move)
+	if(can_move == 0)
 	{
-		// particulas do movimento
-		if(abs(hsp) > move_spd_max - 0.5 && ground)
+		var move = key_right - key_left != 0;
+	
+		if(move)
 		{
-			var _choose = irandom(100);
-		
-			if(_choose > 85)
+			// particulas do movimento
+			if(abs(hsp) > move_spd_max - 0.5 && ground)
 			{
-				for(var i = 0; i < irandom_range(6,10); i++)
+				var _choose = irandom(100);
+		
+				if(_choose > 85)
 				{
 					var xx = random_range(x - sprite_width / 1.5, x + sprite_width / 1.5);
 				
-					instance_create_depth(xx, y, depth - 1, obj_part_run);
+					part_create(xx, y, "FX", obj_part_run, [6,10])
 				}
 			}
+		
+			change_sprite(spr_player_run);
+		
+			move_dir = point_direction(0,0,key_right-key_left,0);
+			move_spd = approach(move_spd,move_spd_max,acc);
+		
+			angle = lerp(angle, see * -inclination, 0.20);
 		}
+		else
+		{
+			change_sprite(spr_player);
 		
-		change_sprite(spr_player_run);
+			move_spd = approach(move_spd,0,dcc);	
 		
-		move_dir = point_direction(0,0,key_right-key_left,0);
-		move_spd = approach(move_spd,move_spd_max,acc);
-		
-		angle = lerp(angle, see * -inclination, 0.20);
+			angle = approach(angle, 0, 0.25);
+		}
+	
+		hsp = lengthdir_x(move_spd,move_dir);
 	}
 	else
 	{
-		change_sprite(spr_player);
-		
-		move_spd = approach(move_spd,0,dcc);	
-		
-		angle = approach(angle, 0, 0.25);
+		can_move = approach(can_move,0,1);
 	}
-	
-	hsp = lengthdir_x(move_spd,move_dir);
 	
 	
 	// particulas da animação
 	if(sprite_index == spr_player && image_index >= 4)
 	{
-		for(var i = 0; i < irandom_range(1,1); i++)
-		{
-			var xx = random_range(x - sprite_width / 1.5, x + sprite_width / 1.5);
-				
-			instance_create_depth(xx, y - 4, depth - 1, obj_part_splash);
-		}
+		var xx = random_range(x - sprite_width / 1.5, x + sprite_width / 1.5);
+			
+		part_create(xx, y, "FX", obj_part_splash, [1,1])
 	}
 	
 	#endregion
@@ -69,10 +69,7 @@ function player_state_free()
 			xscale = 1.8;	
 			yscale = 0.4;	
 			
-			for(var i = 0; i < irandom_range(abs(round(vsp)) + 4,abs(round(vsp)) + 9); i++)
-			{
-				instance_create_depth(x, y, depth - 1, obj_part_splash_die);
-			}
+			part_create(x, y, "FX", obj_part_splash_die, [abs(round(vsp)) + 4,abs(round(vsp)) + 9]);
 		}
 	}
 
@@ -137,6 +134,14 @@ function player_state_free()
 		dead();
 	}
 	#endregion
+	
+	#region other objs
+	if(instance_exists(obj_fade_in) || instance_exists(obj_fade_out))
+	{
+		can_move = 10;
+	}
+	
+	#endregion
 }
 
 function player_state_dead()
@@ -170,19 +175,14 @@ function player_state_dead()
 		
 		if(_choose > 80)
 		{
-			for(var i = 0; i < irandom_range(18,25); i++)
-			{
-				
-				var yy = random_range(y - sprite_height / 2, y + sprite_height / 2);
-				
-				instance_create_depth(x, yy, depth - 1, obj_part_splash_die);
-				
-				state = player_state_hidden;
-			}
+			var yy = random_range(y - sprite_height / 2, y + sprite_height / 2);
+			
+			part_create(x, yy, "FX", obj_part_splash_die, [18,25])
+			
+			state = player_state_hidden;
 		}
 	}
 }
-
 
 function player_state_hidden()
 {
@@ -221,31 +221,33 @@ function player_state_hidden()
 	
 }
 
-
 function player_state_door()
 {
+	static fade = 1;
+	
+	if(!instance_exists(obj_fade_in)) fade = 0;
+	
+	x = lerp(x,obj_door.x,0.30);
+	y = lerp(y,obj_door.y,0.30);
+	
 	hsp = 0;
 	vsp = 0;
 	
 	angle = 0;
 	
-	var _door = function()
+	var r = lerp(color_get_red(image_blend), 0, 0.01);
+	var g = lerp(color_get_green(image_blend), 0, 0.01);
+	var b = lerp(color_get_blue(image_blend), 0, 0.01);
+	
+	image_blend = make_color_rgb(r, g, b);
+	
+	if(image_blend == c_black && fade == 0) 
 	{
-		var r = lerp(color_get_red(image_blend), 0, 0.01);
-		var g = lerp(color_get_green(image_blend), 0, 0.01);
-		var b = lerp(color_get_blue(image_blend), 0, 0.01);
-	
-		image_blend = make_color_rgb(r, g, b);
-	
-		if(image_blend == 0)
-		{
-			state = player_state_hidden;
+		if(!instance_exists(obj_fade_in))instance_create_layer(0,0,"transitions",obj_fade_in);
+		fade = 1;
 		
-			image_index = 0;
-		}
+		hsp = 0;
+		vsp = 0;
 	}
-	
-	var _time_source = time_source_create(time_source_game, 120, time_source_units_frames, _door);
-	
-	time_source_start(_time_source);
+
 }	
