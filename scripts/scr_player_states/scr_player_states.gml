@@ -74,7 +74,6 @@ function player_state_free()
 	}
 
 	
-	
 	ground = place_meeting(x, y + 1, colls);
 	
 	if(ground)
@@ -106,12 +105,12 @@ function player_state_free()
 		vsp = -jump_spd;
 		
 		has_jump = true;
-		cur_time = 0
+		cur_time = 0;
 		
 		xscale = 0.4;	
 		yscale = 1.8;	
 		
-		audio_play_sound(snd_jump,1,false);
+		obj_sfx.menu_snd_jump = true;
 	}
 	
 	// sistema de animações do jump e fall
@@ -215,7 +214,7 @@ function player_state_hidden()
 	}
 	
 	// time source da troca de estado e particula
-	var _time_source = time_source_create(time_source_game, 30, time_source_units_frames, _func);
+	var _time_source = time_source_create(time_source_game, 20, time_source_units_frames, _func);
 	
 	time_source_start(_time_source);
 	
@@ -225,6 +224,8 @@ function player_state_door()
 {
 	static fade = 1;
 	
+	change_sprite(spr_player_door);
+	
 	if(!instance_exists(obj_fade_in)) fade = 0;
 	
 	x = lerp(x,obj_door.x,0.30);
@@ -232,6 +233,9 @@ function player_state_door()
 	
 	hsp = 0;
 	vsp = 0;
+	
+	xscale -= 0.025;
+	yscale -= 0.025;
 	
 	angle = 0;
 	
@@ -250,4 +254,5 @@ function player_state_door()
 		vsp = 0;
 	}
 
-}	
+}
+

@@ -1,17 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_view_camera",
+  "%Name":"obj_music_manager",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_view_camera",
+  "name":"obj_music_manager",
   "overriddenProperties":[],
   "parent":{
-    "name":"View",
-    "path":"folders/Objects/Controll/View.yy",
+    "name":"Sound",
+    "path":"folders/Objects/Controll/Sound.yy",
   },
   "parentObjectId":null,
   "persistent":true,

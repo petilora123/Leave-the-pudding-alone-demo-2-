@@ -1,20 +1,22 @@
 {
   "$GMObject":"",
-  "%Name":"obj_view_camera",
+  "%Name":"obj_fork_side",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_view_camera",
+  "name":"obj_fork_side",
   "overriddenProperties":[],
   "parent":{
-    "name":"View",
-    "path":"folders/Objects/Controll/View.yy",
+    "name":"Forks",
+    "path":"folders/Objects/Obstacles/Forks.yy",
   },
-  "parentObjectId":null,
-  "persistent":true,
+  "parentObjectId":{
+    "name":"obj_par_obstacle",
+    "path":"objects/obj_par_obstacle/obj_par_obstacle.yy",
+  },
+  "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
   "physicsFriction":0.2,
@@ -31,7 +33,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_fork_small",
+    "path":"sprites/spr_fork_small/spr_fork_small.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
