@@ -9,8 +9,8 @@
   "name":"obj_part_splash",
   "overriddenProperties":[],
   "parent":{
-    "name":"FX",
-    "path":"folders/Objects/FX.yy",
+    "name":"Part",
+    "path":"folders/Objects/FX/Part.yy",
   },
   "parentObjectId":null,
   "persistent":false,

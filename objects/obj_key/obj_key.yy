@@ -10,8 +10,8 @@
   "name":"obj_key",
   "overriddenProperties":[],
   "parent":{
-    "name":"Door",
-    "path":"folders/Objects/Door.yy",
+    "name":"Key",
+    "path":"folders/Objects/Door/Key.yy",
   },
   "parentObjectId":null,
   "persistent":false,

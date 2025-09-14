@@ -57,7 +57,7 @@ if(instance_exists(obj_player))
 	{	
 		desative = false;		
 		d_time = false;
-		time = 120;
+		time = 90
 	
 		x = lerp(x,xstart,0.20);
 		y = lerp(y,ystart,0.20);

@@ -6,4 +6,4 @@ desative = false;
 player_desative = false;
 
 d_time = false;
-time = 120;
+time = 90;

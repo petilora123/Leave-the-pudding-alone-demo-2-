@@ -41,7 +41,7 @@ switch(room)
 		draw_text(_middle_w, _middle_h, "bem facil");
 	break;
 	case rm_11:
-		draw_text(_middle_w, room_height / 1.5, "pense dentro dos textos!");
+		draw_text(_middle_w, room_height / 1.75, "pense dentro dos textos!");
 	break;
 	
 }

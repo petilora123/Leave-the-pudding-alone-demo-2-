@@ -1,9 +1,9 @@
 function player_state_free()
 {
-	var key_jump = keyboard_check_pressed(vk_up);
-	var key_jump_down = keyboard_check(vk_up);
-	var key_left = keyboard_check(vk_left);
-	var key_right = keyboard_check(vk_right);
+	var key_jump = keyboard_check_pressed(vk_up) || keyboard_check_pressed(vk_space);
+	var key_jump_down = keyboard_check(vk_up) || keyboard_check(vk_space);
+	var key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
+	var key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
 	
 	#region movement hsp
 	if(can_move == 0)
@@ -231,8 +231,8 @@ function player_state_door()
 	
 	if(!instance_exists(obj_fade_in)) fade = 0;
 	
-	x = lerp(x,obj_door.x,0.30);
-	y = lerp(y,obj_door.y,0.30);
+	x = lerp(x,obj_par_door.x,0.30);
+	y = lerp(y,obj_par_door.y,0.30);
 	
 	hsp = 0;
 	vsp = 0;
@@ -278,7 +278,7 @@ function player_state_key()
 	}
 	
 	// time source da troca de estado
-	var _time_source = time_source_create(time_source_game, 30, time_source_units_frames, _func);
+	var _time_source = time_source_create(time_source_game, 90, time_source_units_frames, _func);
 	
 	time_source_start(_time_source);
 }

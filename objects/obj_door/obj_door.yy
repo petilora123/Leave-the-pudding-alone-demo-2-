@@ -14,7 +14,10 @@
     "name":"Door",
     "path":"folders/Objects/Door.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_par_door",
+    "path":"objects/obj_par_door/obj_par_door.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

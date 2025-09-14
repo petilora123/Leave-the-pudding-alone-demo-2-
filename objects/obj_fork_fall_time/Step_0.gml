@@ -14,8 +14,10 @@ if(move)
 if(obj_player.state == player_state_hidden)
 {
 	move = false;
-	time = 60 * 4;
+	time = time_hidden;
 	
 	x = xstart;
 	y = ystart;
 }
+
+y+=vsp;
