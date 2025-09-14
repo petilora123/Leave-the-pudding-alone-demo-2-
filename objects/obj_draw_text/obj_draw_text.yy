@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_shadow",
+  "%Name":"obj_draw_text",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_shadow",
+  "name":"obj_draw_text",
   "overriddenProperties":[],
   "parent":{
-    "name":"View",
-    "path":"folders/Objects/Controll/View.yy",
+    "name":"Room",
+    "path":"folders/Objects/Controll/Room.yy",
   },
   "parentObjectId":null,
   "persistent":true,

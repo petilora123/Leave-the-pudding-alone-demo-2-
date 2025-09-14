@@ -12,6 +12,8 @@ normal_height = view_height;
 zoom_width = 320;
 zoom_height = 180;
 
+zoom_controll = false;
+
 // Screen Shake
 shake_time = 0;
 shake_lenght = 0;

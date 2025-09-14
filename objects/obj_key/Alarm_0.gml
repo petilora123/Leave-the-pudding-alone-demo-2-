@@ -1,0 +1,1 @@
+mode = "follow_player";

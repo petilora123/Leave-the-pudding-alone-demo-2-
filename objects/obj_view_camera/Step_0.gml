@@ -20,6 +20,11 @@ if(instance_exists(target))
 		view_width = lerp(camera_get_view_width(cam), zoom_width, 0.1);
 		view_height = lerp(camera_get_view_height(cam), zoom_height, 0.1);
 	}
+	if(target.state == player_state_key)
+	{
+		view_width = lerp(camera_get_view_width(cam), zoom_width, 0.1);
+		view_height = lerp(camera_get_view_height(cam), zoom_height, 0.1);
+	}
 	
 	#endregion
 	

@@ -26,19 +26,19 @@ function player_state_free()
 			}
 		
 			change_sprite(spr_player_run);
+			angle = lerp(angle, see * -inclination, 0.20);
+			
 		
 			move_dir = point_direction(0,0,key_right-key_left,0);
 			move_spd = approach(move_spd,move_spd_max,acc);
-		
-			angle = lerp(angle, see * -inclination, 0.20);
 		}
 		else
 		{
-			change_sprite(spr_player);
-		
 			move_spd = approach(move_spd,0,dcc);	
-		
+	
 			angle = approach(angle, 0, 0.25);
+			change_sprite(spr_player);
+			
 		}
 	
 		hsp = lengthdir_x(move_spd,move_dir);
@@ -128,9 +128,12 @@ function player_state_free()
 	#endregion
 	
 	#region dead
-	if(place_meeting(x, y, obj_fork_small)) 
+	if(place_meeting(x, y, obj_par_obstacle)) 
 	{
 		dead();
+		
+		obj_sfx.menu_snd_hurt = true;
+		
 	}
 	#endregion
 	
@@ -254,5 +257,29 @@ function player_state_door()
 		vsp = 0;
 	}
 
+}
+
+function player_state_key()
+{
+	hsp = 0;
+	
+	angle = 0;
+	
+	change_sprite(spr_player_key);
+	
+	if(!place_meeting(x, y + 1, colls)) vsp += grav;
+	
+	var _func = function()
+	{
+		if(state != player_state_dead && state != player_state_door) 
+		{
+			state = player_state_free;
+		}
+	}
+	
+	// time source da troca de estado
+	var _time_source = time_source_create(time_source_game, 30, time_source_units_frames, _func);
+	
+	time_source_start(_time_source);
 }
 

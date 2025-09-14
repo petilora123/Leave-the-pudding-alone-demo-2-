@@ -1,6 +1,6 @@
 
 
-if(distance_to_object(obj_player) <= 150)
+if(distance_to_object(obj_player) <= range)
 {
 	move = true;
 }

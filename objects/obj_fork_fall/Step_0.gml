@@ -1,22 +1,21 @@
 
-if(time > 0)
+if(obj_player.x >= (room_width / 2))
 {
-	time--;	
+	move = true;	
 }
 
-if(time <= 0)
+if(move)
 {
-	vsp += 0.4;
+	vsp += 0.6;
 }
-
 
 if(obj_player.state == player_state_hidden)
 {
-	time = 0;
+	move = false;
+	vsp = 0;
 	
 	x = xstart;
 	y = ystart;
 }
 
-x+=hsp;
 y+=vsp;

@@ -3,7 +3,7 @@
 hsp = 0;
 vsp = 0;
 
-colls = [layer_tilemap_get_id("tile_wall"),obj_block];
+colls = [layer_tilemap_get_id("tile_wall"),obj_block,obj_block_not_visible];
 
 move_spd_max = 6;
 move_spd = 0;

@@ -1,18 +1,35 @@
-if(menu_snd_jump == true)
+
+
+if(menu_snd_jump)
 {
-	audio_play_sound(snd_jump,0,0);
-	menu_snd_jump = false;
+    audio_play_sound(snd_jump, 1, false);
+    menu_snd_jump = false;
 }
 
-if(audio_snd == true && !audio_is_playing(audio_snd_inst))
+if(menu_snd_hurt)
 {
-	audio_snd_inst = audio_play_sound(snd_jump,0,0);
+    audio_play_sound(snd_hurt, 1, false);
+    menu_snd_hurt = false;
 }
 
-if(audio_snd == false && audio_is_playing(audio_snd_inst))
+if(menu_snd_shine)
 {
-	audio_stop_sound(audio_snd_inst);
-	game_end();
+    audio_play_sound(snd_shine, 1, false);
+    menu_snd_shine = false;
 }
 
-audio_snd = false;
+
+if(audio_snd)
+{
+    if(!audio_is_playing(audio_snd_inst))
+    {
+        audio_snd_inst = audio_play_sound(audio_snd, 1, true);
+    }
+}
+else
+{
+    if(audio_is_playing(audio_snd_inst))
+    {
+        audio_stop_sound(audio_snd_inst);
+    }
+}
