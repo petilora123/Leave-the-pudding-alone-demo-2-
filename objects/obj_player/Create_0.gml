@@ -44,7 +44,7 @@ inclination = 10;
 change_sprite = function(sprite)
 {
 	if(sprite_index == sprite) return 0;
-	if(sprite_index == spr_door_out && state != player_state_door) return 0;
+	if(sprite_index == spr_door_out && state != player_state_door && sprite != spr_door_out_dead) return 0;
 	
 	image_index = 0;
 	

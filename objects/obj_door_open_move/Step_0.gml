@@ -19,6 +19,6 @@ if(instance_exists(obj_player))
 	
 	if(move)
 	{
-		x = lerp(x, xstart + 50, 0.25);
+		x = lerp(x, xstart + 53, 0.25);
 	}
 }

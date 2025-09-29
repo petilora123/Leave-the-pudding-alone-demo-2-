@@ -1,6 +1,7 @@
 {
   "FolderOrderSettings":[
     {"name":"Font","order":1,"path":"folders/Font.yy",},
+    {"name":"Manager","order":4,"path":"folders/Objects/Controll/Manager.yy",},
     {"name":"Room","order":1,"path":"folders/Objects/Controll/Room.yy",},
     {"name":"Sound","order":2,"path":"folders/Objects/Controll/Sound.yy",},
     {"name":"Key","order":4,"path":"folders/Objects/Door/Key.yy",},
@@ -9,8 +10,8 @@
     {"name":"Part","order":6,"path":"folders/Objects/FX/Part.yy",},
     {"name":"pieces","order":7,"path":"folders/Objects/FX/pieces.yy",},
     {"name":"Blocks","order":2,"path":"folders/Objects/Obstacles/Blocks.yy",},
-    {"name":"door","order":5,"path":"folders/Rooms/door.yy",},
     {"name":"dark","order":6,"path":"folders/Rooms/dark.yy",},
+    {"name":"door","order":5,"path":"folders/Rooms/door.yy",},
     {"name":"side_fork","order":3,"path":"folders/Rooms/side_fork.yy",},
     {"name":"tutorial","order":4,"path":"folders/Rooms/tutorial.yy",},
     {"name":"fx_scripts","order":3,"path":"folders/Scripts/fx_scripts.yy",},
@@ -54,6 +55,7 @@
     {"name":"snd_main","order":1,"path":"sounds/snd_main/snd_main.yy",},
     {"name":"snd_shine","order":3,"path":"sounds/snd_shine/snd_shine.yy",},
     {"name":"spr_block_trap","order":1,"path":"sprites/spr_block_trap/spr_block_trap.yy",},
+    {"name":"spr_door_out_dead","order":3,"path":"sprites/spr_door_out_dead/spr_door_out_dead.yy",},
     {"name":"spr_door_out","order":1,"path":"sprites/spr_door_out/spr_door_out.yy",},
     {"name":"spr_door_pilar","order":2,"path":"sprites/spr_door_pilar/spr_door_pilar.yy",},
     {"name":"spr_eye","order":1,"path":"sprites/spr_eye/spr_eye.yy",},

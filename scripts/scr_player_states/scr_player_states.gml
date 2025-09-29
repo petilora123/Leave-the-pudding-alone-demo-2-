@@ -70,7 +70,10 @@ function player_state_free()
 			xscale = 1.8;	
 			yscale = 0.4;	
 			
-			part_create(x, y, "FX", obj_part_splash_die, [abs(round(vsp)) + 4,abs(round(vsp)) + 9]);
+			if(sprite_index != spr_door_out)
+			{	
+				part_create(x, y, "FX", obj_part_splash_die, [abs(round(vsp)) + 4,abs(round(vsp)) + 9]);
+			}
 		}
 	}
 
@@ -149,7 +152,14 @@ function player_state_free()
 
 function player_state_dead()
 {
-	change_sprite(spr_player_dead);
+	if(room != rm_07)
+	{
+		change_sprite(spr_player_dead);
+	}
+	else
+	{
+		change_sprite(spr_door_out_dead);
+	}
 	
 	hsp = 0;
 	vsp = 0;
@@ -190,6 +200,11 @@ function player_state_dead()
 
 function player_state_hidden()
 {
+	if(room = rm_07)
+	{
+		change_sprite(spr_door_out);
+	}
+	
 	image_alpha = 0;
 	image_blend = c_white;
 	
