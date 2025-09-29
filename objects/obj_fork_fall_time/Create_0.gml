@@ -1,9 +1,10 @@
 image_speed = 0;
 
-move = false;
-time = 180;
+time = 0;
 
-if(room == rm_12) time = 240;
+if(room == rm_12) time = 240; else time = 180;
+alarm[0] = time;
 
-time_hidden = time;
 vsp = 0;
+move = false;
+al = false;

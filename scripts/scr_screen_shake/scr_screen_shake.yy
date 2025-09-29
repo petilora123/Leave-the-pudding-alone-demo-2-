@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_screen_shake",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"game_scripts",
+    "path":"folders/Scripts/game_scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

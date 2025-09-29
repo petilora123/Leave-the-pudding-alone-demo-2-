@@ -6,4 +6,4 @@ speed = random_range(3,5);
 image_angle = random(359);
 gravity = 0.3;
 
-image_blend = c_orange;
+image_blend = global.c_part;

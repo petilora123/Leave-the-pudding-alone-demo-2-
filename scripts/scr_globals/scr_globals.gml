@@ -1,0 +1,1 @@
+global.c_part = c_orange;

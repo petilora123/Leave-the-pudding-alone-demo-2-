@@ -28,13 +28,13 @@ if(instance_exists(target))
 	
 	#endregion
 	
-	camera_set_view_size(cam, view_width, view_height);
-	
 	x_to = target.x - (view_width / 2);
     y_to = target.y - (view_height / 2);
 	
 	x_to = clamp(x_to, 0, room_width - view_width);
     y_to = clamp(y_to, 0, room_height - view_height);
+	
+	camera_set_view_size(cam, view_width, view_height);
     
     if(shake_lenght != 0)
     {

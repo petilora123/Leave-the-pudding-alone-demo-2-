@@ -11,6 +11,11 @@ draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 
+var room_name = room_get_name(room);
+var room_number = real(string_delete(room_name,1,3));
+
+var rm = "Level " + string(room_number);
+
 draw_text_transformed(room_width / 2, room_height / 2, rm, scale, scale, sin(current_time * freq) * 8);
 
 draw_set_halign(-1);

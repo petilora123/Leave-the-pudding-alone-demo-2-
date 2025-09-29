@@ -29,6 +29,9 @@ cur_time = 0;
 #endregion
 
 #region draw
+
+if(room == rm_07) sprite_index = spr_door_out;
+
 xscale = 1; 
 yscale = 1; 
 
@@ -41,6 +44,7 @@ inclination = 10;
 change_sprite = function(sprite)
 {
 	if(sprite_index == sprite) return 0;
+	if(sprite_index == spr_door_out && state != player_state_door) return 0;
 	
 	image_index = 0;
 	

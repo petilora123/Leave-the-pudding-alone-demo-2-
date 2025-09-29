@@ -1,3 +1,4 @@
+
 function player_state_free()
 {
 	var key_jump = keyboard_check_pressed(vk_up) || keyboard_check_pressed(vk_space);
@@ -116,12 +117,12 @@ function player_state_free()
 	// sistema de animações do jump e fall
 	if(vsp > 0)
 	{
-		sprite_index = spr_player_air;
+		change_sprite(spr_player_air);
 		image_index = 1;
 	}
 	else if(vsp < 0)
 	{
-		sprite_index = spr_player_air;
+		change_sprite(spr_player_air);
 		image_index = 0;
 	}
 	
@@ -162,7 +163,7 @@ function player_state_dead()
 	y = random_range(dead_y - 1, dead_y + 1);
 	
 	// mudando a cor para red
-	var r = lerp(color_get_red(image_blend), 160, 0.01);
+	var r = lerp(color_get_red(image_blend), 160, 0.02);
 	var g = lerp(color_get_green(image_blend), 0, 0.01);
 	var b = lerp(color_get_blue(image_blend), 0, 0.01);
 	
@@ -180,6 +181,7 @@ function player_state_dead()
 			var yy = random_range(y - sprite_height / 2, y + sprite_height / 2);
 			
 			part_create(x, yy, "FX", obj_part_splash_die, [18,25])
+			piece_create(spr_player_pieces);
 			
 			state = player_state_hidden;
 		}
@@ -278,7 +280,7 @@ function player_state_key()
 	}
 	
 	// time source da troca de estado
-	var _time_source = time_source_create(time_source_game, 90, time_source_units_frames, _func);
+	var _time_source = time_source_create(time_source_game, 50, time_source_units_frames, _func);
 	
 	time_source_start(_time_source);
 }

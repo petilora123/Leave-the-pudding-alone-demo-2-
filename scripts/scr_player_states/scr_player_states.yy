@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_player_states",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"player_scripts",
+    "path":"folders/Scripts/player_scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
